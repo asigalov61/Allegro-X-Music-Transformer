@@ -283,21 +283,21 @@ for f in tqdm(filez[START_FILE_NUMBER:]):
                         chords_counter += 1
                         chords_counter_once = True
 
-                        if m[4] != pvs[pat]:
-                            melody_chords2.extend([m[4]+640]) # Velocity tokens
-
                         if pat != ppat: # Patch tokens
                             melody_chords2.extend([pat+64])
+
+                        if m[4] != pvs[pat]:
+                            melody_chords2.extend([m[4]+640]) # Velocity tokens
 
                         melody_chords2.extend([m[1]+192, ptc+256]) # Main tokens tuplets (Dur - Pitch)
 
                     else:
 
-                        if m[4] != pvs[pat]:
-                            melody_chords2.extend([m[4]+640]) # Velocity tokens
-
                         if pat != ppat: # Patch tokens
                             melody_chords2.extend([pat+64])
+
+                        if m[4] != pvs[pat]:
+                            melody_chords2.extend([m[4]+640]) # Velocity tokens
 
                         melody_chords2.extend([m[1]+192, ptc+256]) # Main tokens tuplets (Dur - Pitch)
 
@@ -404,10 +404,6 @@ if len(out) != 0:
 
             time += (ss * 32)
 
-        if 640 <= ss < 704:
-
-            vel = ((ss-640) * 2)
-
         if 64 <= ss <= 192:
             patch = (ss-64)
 
@@ -424,6 +420,10 @@ if len(out) != 0:
 
             if patch == 128:
                 channel = 9
+
+        if 640 <= ss < 704:
+
+            vel = ((ss-640) * 2)
 
         if 192 <= ss < 256:
 
