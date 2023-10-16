@@ -179,8 +179,8 @@ for f in tqdm(filez[START_FILE_NUMBER:]):
                     e[1] = int(e[1] / 32) # Max 2 seconds for start-times
                     e[2] = int(e[2] / 64) # Max 4 seconds for durations
 
-                # Sorting by pitch, then by start-time
-                events_matrix1.sort(key=lambda x: x[3])
+                # Sorting by patch, pitch, and by start-time
+                events_matrix1.sort(key=lambda x: x[6])
                 events_matrix1.sort(key=lambda x: x[4])
                 events_matrix1.sort(key=lambda x: x[1])
 
