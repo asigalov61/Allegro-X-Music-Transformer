@@ -250,12 +250,16 @@ for f in tqdm(filez[START_FILE_NUMBER:]):
 
                 for m in melody_chords:
 
-                    if (comp_chords_len - chords_counter) == 50 and m[0] != 0:
+                    if ((comp_chords_len - chords_counter) == 50) and (m[0] != 0):
                         melody_chords2.extend([959]) # Outro token
 
                     if chords_counter % 50 == 0 and m[0] != 0:
                         nct = 704+min(255, ((chords_counter // 50)-1)) # Chords counter token
                         melody_chords2.extend([nct])
+                        chords_counter += 1
+                    else:
+                        if m[0] != 0:
+                            chords_counter += 1
 
                     # Drums patch
                     if m[2] == 9: # Drums patch will be == 128
@@ -275,7 +279,6 @@ for f in tqdm(filez[START_FILE_NUMBER:]):
 
                     if m[0] != 0:
                         melody_chords2.extend([m[0]]) # Time tokens if time != 0
-                        chords_counter += 1
 
                         if pat != ppat: # Patch tokens
                             melody_chords2.extend([pat+64])
