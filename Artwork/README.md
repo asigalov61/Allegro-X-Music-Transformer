@@ -2,7 +2,7 @@
 
 ***
 
-## Images courtesy of Bing Images Search
+## Images courtesy of Bing Images Search and Stable Diffusion XL (SDXL)
 
 ***
 
